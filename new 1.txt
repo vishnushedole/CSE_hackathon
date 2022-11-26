@@ -1,0 +1,28 @@
+def search(signature):
+    mycursor = mydb.cursor()
+    query = 'select * from siganturesdb.hash_table where Hashcode = %s;'
+    mycursor.execute(query,[signature])
+    output = mycursor.fetchall()
+    if(len(output)):
+        print(output)
+        print("is malicious")
+	else:
+		randomForest(filePath)
+		
+		
+classifier = joblib.load('model.sav')
+	avg_values = new_df.mean()
+	avg_values = pd.DataFrame(avg_values)
+	pe = pefile.PE(filePath)
+	avg_SectionsMinRawsize = avg_values.iloc[12].values[0]
+	avg_SectionsMinVirtualsize = avg_values.iloc[13].values[0]
+	avg_ImportsNbDLL = avg_values.iloc[14].values[0]
+	avg_ImportsNb = avg_values.iloc[15].values[0]
+	avg_ImportsNbOrdinal = avg_values.iloc[16].values[0]
+	avg_ExportNb = avg_values.iloc[17].values[0]
+	avg_ResourcesNb = avg_values.iloc[18].values[0]
+	avg_ResourcesMinEntropy = avg_values.iloc[19].values[0]
+	avg_VersionInformationSize = avg_values.iloc[19].values[0]
+	sample = [pe.FILE_HEADER.Machine,pe.FILE_HEADER.SizeOfOptionalHeader,pe.FILE_HEADER.Characteristics,pe.OPTIONAL_HEADER.MajorLinkerVersion,pe.OPTIONAL_HEADER.SizeOfCode,pe.OPTIONAL_HEADER.ImageBase,pe.OPTIONAL_HEADER.FileAlignment,pe.OPTIONAL_HEADER.MajorImageVersion,pe.OPTIONAL_HEADER.MinorImageVersion,pe.OPTIONAL_HEADER.MajorSubsystemVersion,pe.OPTIONAL_HEADER.SizeOfHeaders,pe.OPTIONAL_HEADER.Subsystem,avg_SectionsMinRawsize,avg_SectionsMinVirtualsize,avg_ImportsNbDLL,avg_ImportsNb,avg_ImportsNbOrdinal,avg_ExportNb,avg_ResourcesNb,avg_ResourcesMinEntropy,avg_VersionInformationSize]
+	sample = pd.DataFrame([sample],columns=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
+	print(classifier.predict(sample.values))
